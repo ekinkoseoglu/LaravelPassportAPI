@@ -26,6 +26,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        Passport::routes(); // This method will register the routes necessary to issue access tokens and revoke access tokens, clients, and personal access tokens:
     }
 }

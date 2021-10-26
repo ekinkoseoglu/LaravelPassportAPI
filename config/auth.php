@@ -43,6 +43,7 @@ return [
         'api' => [  // Bu subsection'u ben tanımladım çünkü API requestini Passport'un "TokenGuard"'ı ile authanticate etmesini söyledim böylece
             'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
         ],
     ],
 
