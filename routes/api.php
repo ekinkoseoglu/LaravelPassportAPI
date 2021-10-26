@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthorsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PharIo\Manifest\AuthorCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
         return $request->user(); // Request yapan user'i getir ekrana (Request Class'ının user methodunun özelliği)
     });
 
-    Route::get('/authors/{author}', [AuthorsController::class, 'show']);
+    // Route::get('/authors/{author}', [AuthorsController::class, 'show']);
+
+    Route::apiResource('/authors', AuthorsController::class);
 });

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Http\Resources\AuthorsResource;
+use PharIo\Manifest\AuthorCollection;
+use App\Http\Requests\AuthorsRequest;
 
 class AuthorsController extends Controller
 {
@@ -15,7 +17,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        return AuthorsResource::collection(Author::all());
     }
 
     /**
@@ -34,9 +36,21 @@ class AuthorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorsRequest $request)
     {
-        //
+
+        $author = Author::create([
+            'name' => 'John Doe' // 'John Doe' isimli bir Author Model yarattık. 
+        ]);
+
+        //      OR CREAT A AUTHOR WITH FAKE object Using FACTORY
+
+        // $faker = \Faker\Factory::create(1);
+        // $author= Author::create([
+        //     'name'=>$faker->name
+        // ]);
+
+        return new AuthorsResource($author);
     }
 
     /**
@@ -83,9 +97,18 @@ class AuthorsController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(AuthorsRequest $request, Author $author)
     {
-        //
+        // $author->update([
+        //     'name'=>'Steph'
+        // ]);
+
+        //   OR YOU CAN UPDATE NAME WITH GIVEN REQUEST
+
+        $author->update([
+            'name' => $request->input('isim')
+        ]);
+        return new AuthorsResource($author);
     }
 
     /**
@@ -96,6 +119,7 @@ class AuthorsController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+        return response(null, 204);
     }
 }
