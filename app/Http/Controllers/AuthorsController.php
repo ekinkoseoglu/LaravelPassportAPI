@@ -36,19 +36,19 @@ class AuthorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AuthorsRequest $request)
+    public function store(Request $request)
     {
 
-        $author = Author::create([
-            'name' => 'John Doe' // 'John Doe' isimli bir Author Model yarattık. 
-        ]);
+        // $author = Author::create([
+        //     'name' => 'John Doe' // 'John Doe' isimli bir Author Model yarattık. 
+        // ]);
 
         //      OR CREAT A AUTHOR WITH FAKE object Using FACTORY
 
-        // $faker = \Faker\Factory::create(1);
-        // $author= Author::create([
-        //     'name'=>$faker->name
-        // ]);
+        $faker = \Faker\Factory::create(1);
+        $author = Author::create([
+            'name' => $faker->name
+        ]);
 
         return new AuthorsResource($author);
     }
@@ -106,7 +106,7 @@ class AuthorsController extends Controller
         //   OR YOU CAN UPDATE NAME WITH GIVEN REQUEST
 
         $author->update([
-            'name' => $request->input('isim')
+            'name' => $request->input('name')
         ]);
         return new AuthorsResource($author);
     }

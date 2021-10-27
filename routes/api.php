@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UsersController;
+use App\Http\Resources\UsersResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\AuthorCollection;
