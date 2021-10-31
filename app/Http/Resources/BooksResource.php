@@ -19,7 +19,7 @@ class BooksResource extends JsonResource
             'type' => 'Books', //  
             'attributes' => [ // 
                 'name' => $this->name, // $request->name ($book->name)
-                'author' => $this->author,
+                'author' => $this->author, // Created Relationship between 'Book' and 'Author' Models defined all Controller actions and Tested all Successfully
                 'description' => $this->description, // $request->description ($book->description)
                 'publication_year' => $this->publictaion_year, // $request->publication_year ($book->publication_year)
                 'created_at' => $this->created_at, // $request->created_at ($book->created_at)
