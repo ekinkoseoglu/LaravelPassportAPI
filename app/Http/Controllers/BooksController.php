@@ -19,6 +19,8 @@ class BooksController extends Controller
         return BooksResource::collection(Book::all());
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
